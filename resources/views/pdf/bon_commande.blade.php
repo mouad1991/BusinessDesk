@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@include('pdf.themes.styles', ['pdfTheme' => $pdfTheme ?? 'modern', 'docAccentColor' => $docAccentColor ?? '#1a73c8'])
+</style>
+</head>
+<body>
+
+@include('pdf.partials.footer')
+
+<!-- HEADER -->
+@include('pdf.partials.header', ['docTitle' => 'BON DE COMMANDE', 'docTitleColor' => '#ffffff'])
+
+<!-- INFO SECTIONS -->
+<div class="info-row">
+    <div class="info-col">
+        <div class="section-label">Client / Destinataire</div>
+        <div class="info-line"><span class="info-label">Société : </span><span class="info-value">{{ $document->client->company_name }}</span></div>
+        <div class="info-line"><span class="info-label">Adresse : </span>{{ $document->client->address ?? '' }}</div>
+        <div class="info-line"><span class="info-label">Tél : </span>{{ $document->client->phone ?? '' }}</div>
+        <div class="info-line"><span class="info-label">ICE : </span>{{ $document->client->ice ?? '' }}</div>
+    </div>
+    <div class="info-col">
+        <div class="section-label">Informations Commande</div>
+        <div class="info-line"><span class="info-label">N° devis référence : </span><span class="info-value">{{ $document->quote_reference ?? '' }}</span></div>
+        <div class="info-line"><span class="info-label">Date de commande : </span><span class="info-value">{{ $document->order_date ? $document->order_date->format('d/m/Y') : '' }}</span></div>
+        <div class="info-line"><span class="info-label">Mode de paiement : </span><span class="info-value">{{ $document->payment_mode ?? '' }}</span></div>
+    </div>
+</div>
+
+@if($document->subject)
+<div class="object-row">
+    <span class="object-label">Objet : </span>{{ $document->subject }}
+</div>
+@endif
+
+<!-- ITEMS TABLE -->
+<table class="items-table">
+    <thead>
+        <tr>
+            <th style="width:40px" class="center">Réf.</th>
+            <th class="center">Désignation / Description</th>
+            <th style="width:50px" class="center">Unité</th>
+            <th style="width:40px" class="center">Qté</th>
+            <th style="width:80px" class="center">P.U HT</th>
+            <th style="width:110px" class="center">P.T HT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($document->items as $item)
+        <tr>
+            <td class="center">{{ $item->ref }}</td>
+            <td>{{ $item->description }}</td>
+            <td class="center">{{ $item->unit }}</td>
+            <td class="center">{{ number_format($item->quantity, 2, ',', ' ') }}</td>
+            <td class="right">{{ number_format($item->unit_price_ht, 2, ',', ' ') }} DH</td>
+            <td class="right bold">{{ number_format($item->total_price_ht, 2, ',', ' ') }} DH</td>
+        </tr>
+        @endforeach
+        @for($i = count($document->items); $i < 12; $i++)
+        <tr class="empty-row"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        @endfor
+    </tbody>
+</table>
+
+<!-- NOTES + TOTALS côte à côte -->
+<table class="totals-payments-wrap">
+    <tr>
+        <td class="totals-payments-left">
+            @if(!empty($document->notes))
+            <div class="pdf-notes">
+                <div class="pdf-notes-title">Notes / Observations</div>
+                <div class="pdf-notes-body">{!! nl2br(e($document->notes)) !!}</div>
+            </div>
+            @endif
+        </td>
+        <td class="totals-payments-right">
+            <table class="totals-inner-table">
+                <tr><td>Total HT :</td><td>{{ number_format($document->total_ht, 2, ',', ' ') }} DH</td></tr>
+                <tr><td>TVA ({{ $document->tva_rate }}%) :</td><td>{{ number_format($document->tva_amount, 2, ',', ' ') }} DH</td></tr>
+                <tr class="ttc-row"><td>TOTAL TTC :</td><td>{{ number_format($document->total_ttc, 2, ',', ' ') }} DH</td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<!-- AMOUNT IN WORDS -->
+<div class="amount-words">
+    <span class="amount-words-label">Arrêté le présent bon de commande à la somme de : </span>
+    <span class="amount-words-value">{{ $document->amount_in_words }} TTC</span>
+</div>
+
+<!-- CONDITIONS -->
+<div class="conditions">
+    <div class="conditions-title">CONDITIONS GÉNÉRALES</div>
+    @if($document->company->conditions_bc)
+        @foreach(explode("\n", $document->company->conditions_bc) as $line)
+            @if(trim($line))<p>• {{ trim($line) }}</p>@endif
+        @endforeach
+    @else
+        <p>• La commande est ferme et définitive à réception du présent bon de commande signé et cacheté.</p>
+        <p>• Les délais d'exécution ou de livraison seront convenus d'un commun accord entre les deux parties.</p>
+        <p>• Tout litige sera réglé à l'amiable ou devant les juridictions compétentes.</p>
+        <p>• Les prix sont fermes et non révisables sauf accord écrit préalable.</p>
+    @endif
+</div>
+
+<!-- SIGNATURES -->
+<div class="signatures">
+    <div class="sig-col">
+        <div class="sig-title">Cachet et signature du client</div>
+        <div style="height:40px"></div>
+        <div class="sig-line"></div>
+        <div class="sig-approved">Lu et approuvé</div>
+    </div>
+    <div class="sig-col">
+        <div class="sig-title">Cachet et signature {{ $document->company->name }}</div>
+        <div style="height:40px"></div>
+        <div class="sig-line"></div>
+        <div class="sig-approved">Lu et approuvé</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="160" height="220">
+  <!-- White page -->
+  <rect width="160" height="220" fill="#ffffff"/>
+  <!-- Logo top-left — white col -->
+  <rect x="10" y="8" width="30" height="20" fill="#0c4a6e" opacity="0.8" rx="2"/>
+  <!-- Middle col — light blue bg -->
+  <rect x="42" y="6" width="64" height="28" fill="#f0f9ff"/>
+  <rect x="46" y="10" width="36" height="2.5" fill="#0c4a6e" rx="1"/>
+  <rect x="46" y="15" width="50" height="2" fill="#0369a1" rx="1"/>
+  <rect x="46" y="20" width="46" height="2" fill="#0369a1" rx="1"/>
+  <rect x="46" y="25" width="40" height="2" fill="#0369a1" rx="1"/>
+  <!-- Right header — CYAN VIVE -->
+  <rect x="108" y="6" width="46" height="28" fill="#0ea5e9"/>
+  <rect x="114" y="11" width="34" height="4" fill="#ffffff" rx="1"/>
+  <rect x="116" y="19" width="26" height="2.5" fill="#e0f2fe" rx="1"/>
+  <rect x="116" y="25" width="22" height="2" fill="#bae6fd" rx="1"/>
+
+  <!-- Cyan section labels with 2px cyan underline -->
+  <rect x="10" y="42" width="32" height="2.5" fill="#0ea5e9" rx="1"/>
+  <rect x="10" y="45" width="32" height="0.8" fill="#0ea5e9"/>
+  <rect x="86" y="42" width="32" height="2.5" fill="#0ea5e9" rx="1"/>
+  <rect x="86" y="45" width="32" height="0.8" fill="#0ea5e9"/>
+  <!-- Left col with cyan right border -->
+  <rect x="74" y="42" width="0.8" height="28" fill="#0ea5e9"/>
+  <!-- Info lines -->
+  <rect x="10" y="50" width="58" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="10" y="55" width="50" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="10" y="60" width="54" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="86" y="50" width="58" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="86" y="55" width="50" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="86" y="60" width="46" height="2" fill="#e2e8f0" rx="1"/>
+
+  <!-- CYAN table header -->
+  <rect x="10" y="70" width="140" height="11" fill="#0ea5e9"/>
+  <rect x="14" y="74" width="14" height="3" fill="#ffffff" rx="1"/>
+  <rect x="38" y="74" width="36" height="3" fill="#ffffff" rx="1"/>
+  <rect x="92" y="74" width="14" height="3" fill="#ffffff" rx="1"/>
+  <rect x="116" y="74" width="14" height="3" fill="#ffffff" rx="1"/>
+  <rect x="134" y="74" width="14" height="3" fill="#ffffff" rx="1"/>
+  <!-- Rows — light blue even stripe -->
+  <rect x="10" y="82" width="140" height="8" fill="#f0f9ff"/>
+  <rect x="10" y="91" width="140" height="8" fill="#ffffff"/>
+  <rect x="10" y="100" width="140" height="8" fill="#f0f9ff"/>
+  <rect x="10" y="109" width="140" height="8" fill="#ffffff"/>
+  <rect x="10" y="118" width="140" height="8" fill="#f0f9ff"/>
+  <rect x="10" y="127" width="140" height="8" fill="#ffffff"/>
+  <rect x="10" y="82" width="140" height="54" fill="none" stroke="#e0f2fe" stroke-width="0.5"/>
+
+  <!-- Totals — cyan border -->
+  <rect x="86" y="142" width="64" height="20" fill="#ffffff" stroke="#bae6fd" stroke-width="0.7" rx="1"/>
+  <rect x="90" y="146" width="22" height="2" fill="#94a3b8" rx="1"/>
+  <rect x="122" y="146" width="24" height="2" fill="#0c4a6e" rx="1"/>
+  <rect x="90" y="151" width="22" height="2" fill="#94a3b8" rx="1"/>
+  <rect x="122" y="151" width="24" height="2" fill="#0c4a6e" rx="1"/>
+  <!-- CYAN TTC row -->
+  <rect x="86" y="155" width="64" height="8" fill="#0ea5e9" rx="1"/>
+  <rect x="90" y="158" width="22" height="2.5" fill="#ffffff" rx="1"/>
+  <rect x="122" y="158" width="24" height="2.5" fill="#ffffff" rx="1"/>
+
+  <!-- White footer + rainbow stripe -->
+  <rect x="10" y="202" width="140" height="0.8" fill="#e2e8f0"/>
+  <rect x="30" y="205" width="100" height="2" fill="#94a3b8" rx="1"/>
+  <!-- RAINBOW STRIPE at very bottom -->
+  <rect x="0"      y="214" width="26.66" height="6" fill="#ef4444"/>
+  <rect x="26.66"  y="214" width="26.66" height="6" fill="#f97316"/>
+  <rect x="53.33"  y="214" width="26.66" height="6" fill="#eab308"/>
+  <rect x="80"     y="214" width="26.66" height="6" fill="#22c55e"/>
+  <rect x="106.66" y="214" width="26.66" height="6" fill="#3b82f6"/>
+  <rect x="133.33" y="214" width="26.67" height="6" fill="#a855f7"/>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Read(//Users/mouad/.claude/**)",
+      "Bash(npm show:*)",
+      "Bash(claude mcp:*)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('/Users/mouad/.claude/mcp.json','utf8'\\)\\); console.log\\('JSON valid'\\)\")",
+      "mcp__mcp-registry__search_mcp_registry",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/OneWave-AI/claude-skills/main/database-schema-designer/SKILL.md\")",
+      "Bash(mkdir -p /Users/mouad/Sites/BusinessDesk/.claude/skills/laravel-architecture)",
+      "Bash(curl -sL -o /tmp/skill.zip \"https://mcp.directory/api/skills/download/1876\")",
+      "Bash(unzip -o /tmp/skill.zip -d /Users/mouad/Sites/BusinessDesk/.claude/skills/laravel-architecture)",
+      "Bash(rm /tmp/skill.zip)",
+      "Read(//Users/mouad/Sites/**)",
+      "Bash(composer create-project:*)",
+      "Bash(php artisan:*)",
+      "Bash(composer require:*)",
+      "Bash(composer show:*)",
+      "Bash(mysql -u root -e \"CREATE DATABASE IF NOT EXISTS business_desk CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/login)",
+      "Bash(mysql -u root business_desk -e \"SELECT id, firstname, name, email, role FROM users; SELECT id, name, doc_prefix FROM companies; SELECT id, company_name FROM clients;\")",
+      "Bash(curl -s http://localhost:8000/login)",
+      "Bash(curl -s -c /tmp/cookies.txt -b /tmp/cookies.txt -X POST http://localhost:8000/login -d 'email=admin@businessdesk.ma&password=admin123&_token=__CMDSUB_OUTPUT__')",
+      "Bash(pkill -f \"artisan serve\")",
+      "Bash(php -l /Users/mouad/Sites/BusinessDesk/app/Services/AmountInWordsService.php)",
+      "Bash(php -l /Users/mouad/Sites/BusinessDesk/app/Services/NumberingService.php)",
+      "Bash(php -l /Users/mouad/Sites/BusinessDesk/app/Services/DocumentService.php)",
+      "Bash(php -l /Users/mouad/Sites/BusinessDesk/app/Services/PdfService.php)"
+    ]
+  }
+}

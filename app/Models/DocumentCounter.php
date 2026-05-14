@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DocumentCounter extends Model
+{
+    protected $fillable = ['company_id', 'type', 'year', 'last_number'];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+}

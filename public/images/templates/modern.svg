@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="160" height="220">
+  <!-- Page background -->
+  <rect width="160" height="220" fill="#ffffff" rx="3"/>
+  <!-- Header bar -->
+  <rect x="0" y="0" width="160" height="36" fill="#0c4a6e" rx="3"/>
+  <rect x="0" y="26" width="160" height="10" fill="#0c4a6e"/>
+  <!-- Logo placeholder -->
+  <rect x="8" y="6" width="28" height="20" fill="#ffffff" opacity="0.2" rx="2"/>
+  <!-- Doc title box -->
+  <rect x="100" y="4" width="52" height="28" fill="#0ea5e9" rx="2"/>
+  <rect x="108" y="10" width="36" height="4" fill="#ffffff" opacity="0.9" rx="1"/>
+  <rect x="112" y="17" width="28" height="3" fill="#ffffff" opacity="0.6" rx="1"/>
+  <rect x="112" y="23" width="24" height="3" fill="#ffffff" opacity="0.6" rx="1"/>
+  <!-- Info section labels -->
+  <rect x="8" y="42" width="30" height="3" fill="#0ea5e9" rx="1"/>
+  <rect x="86" y="42" width="30" height="3" fill="#0ea5e9" rx="1"/>
+  <!-- Info lines left -->
+  <rect x="8" y="49" width="60" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="8" y="54" width="50" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="8" y="59" width="55" height="2" fill="#e2e8f0" rx="1"/>
+  <!-- Info lines right -->
+  <rect x="86" y="49" width="60" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="86" y="54" width="50" height="2" fill="#e2e8f0" rx="1"/>
+  <rect x="86" y="59" width="55" height="2" fill="#e2e8f0" rx="1"/>
+  <!-- Table header -->
+  <rect x="8" y="68" width="144" height="10" fill="#0c4a6e" rx="1"/>
+  <rect x="12" y="71" width="20" height="3" fill="#ffffff" opacity="0.7" rx="1"/>
+  <rect x="50" y="71" width="40" height="3" fill="#ffffff" opacity="0.7" rx="1"/>
+  <rect x="120" y="71" width="28" height="3" fill="#ffffff" opacity="0.7" rx="1"/>
+  <!-- Table rows -->
+  <rect x="8" y="79" width="144" height="8" fill="#f0f9ff" rx="0"/>
+  <rect x="8" y="88" width="144" height="8" fill="#ffffff" rx="0"/>
+  <rect x="8" y="97" width="144" height="8" fill="#f0f9ff" rx="0"/>
+  <rect x="8" y="106" width="144" height="8" fill="#ffffff" rx="0"/>
+  <rect x="8" y="115" width="144" height="8" fill="#f0f9ff" rx="0"/>
+  <rect x="8" y="124" width="144" height="8" fill="#ffffff" rx="0"/>
+  <!-- Table border -->
+  <rect x="8" y="68" width="144" height="65" fill="none" stroke="#dde6f0" stroke-width="0.5"/>
+  <!-- Totals -->
+  <rect x="90" y="140" width="62" height="22" fill="#f8fafc" stroke="#dde6f0" stroke-width="0.5" rx="1"/>
+  <rect x="94" y="144" width="30" height="2" fill="#94a3b8" rx="1"/>
+  <rect x="94" y="149" width="30" height="2" fill="#94a3b8" rx="1"/>
+  <rect x="90" y="154" width="62" height="8" fill="#0c4a6e" rx="1"/>
+  <rect x="94" y="157" width="30" height="2" fill="#ffffff" opacity="0.8" rx="1"/>
+  <!-- Footer -->
+  <rect x="0" y="208" width="160" height="12" fill="#0c4a6e"/>
+  <rect x="0" y="205" width="160" height="3" fill="#0c4a6e"/>
+  <rect x="20" y="212" width="120" height="2" fill="#ffffff" opacity="0.5" rx="1"/>
+</svg>
