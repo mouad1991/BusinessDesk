@@ -2,12 +2,14 @@
 @section('title', 'Tableau de bord')
 @section('page-title', 'Tableau de bord')
 
+@if(session('impersonate'))
 @section('page-actions')
     <a href="{{ route('manager.companies.create') }}" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         Nouvelle société
     </a>
 @endsection
+@endif
 
 @section('content')
 <div class="company-block">

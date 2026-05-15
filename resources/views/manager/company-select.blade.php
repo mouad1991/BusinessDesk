@@ -27,8 +27,7 @@
         <div class="empty-card">
             <div class="empty-icon">🏢</div>
             <h3>Aucune société enregistrée</h3>
-            <p>Créez votre première société pour commencer.</p>
-            <a href="{{ route('manager.companies.create') }}" class="btn-primary">Créer une société</a>
+            <p>Contactez votre administrateur pour créer une société.</p>
         </div>
     @else
         <div class="company-select-grid">
@@ -54,7 +53,11 @@
         </div>
 
         <div class="company-select-footer">
+            @if(session('impersonate'))
             <a href="{{ route('manager.companies.create') }}" class="btn-secondary">+ Nouvelle société</a>
+            @else
+            <span></span>
+            @endif
             <form method="POST" action="{{ route('logout') }}" style="display:inline">
                 @csrf
                 <button type="submit" class="btn-link">Déconnexion</button>
