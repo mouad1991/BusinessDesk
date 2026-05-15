@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion — BusinessDesk</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script>(function(){var t=localStorage.getItem('bd-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
 </head>
 <body class="auth-body">
 <div class="auth-container">
     <div class="auth-card">
         <div class="auth-logo">
-            <div class="logo-mark">BD</div>
+            <img src="{{ asset('images/logo.svg') }}" alt="BusinessDesk"
+                 style="width:60px;height:60px;border-radius:14px;display:block;margin:0 auto 10px auto;">
             <h1>BusinessDesk</h1>
             <p>Gestion commerciale pour SARL marocaines</p>
         </div>

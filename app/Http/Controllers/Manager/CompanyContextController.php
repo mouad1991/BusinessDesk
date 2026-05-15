@@ -11,9 +11,8 @@ class CompanyContextController extends Controller
 {
     public function select(Request $request)
     {
-        $companies = Company::where('user_id', Auth::id())
-            ->orderBy('name')
-            ->get();
+        $user = Auth::user();
+        $companies = $user->getWorkableCompanies();
 
         // Auto-select if only one company
         if ($companies->count() === 1 && !$request->session()->has('current_company_id')) {
@@ -26,7 +25,14 @@ class CompanyContextController extends Controller
 
     public function switch(Request $request, Company $company)
     {
-        abort_if($company->user_id !== Auth::id(), 403);
+        $user = Auth::user();
+
+        if ($user->isCollaborator()) {
+            $hasAccess = $user->accessibleCompanies()->where('companies.id', $company->id)->exists();
+            abort_if(!$hasAccess, 403, 'Accès refusé à cette société.');
+        } else {
+            abort_if($company->user_id !== $user->id, 403);
+        }
 
         $request->session()->put('current_company_id', $company->id);
 

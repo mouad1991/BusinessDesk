@@ -60,6 +60,12 @@ class Company extends Model
         return $this->hasMany(ServiceDescription::class);
     }
 
+    /** Users (collaborators) who have been granted access to this company */
+    public function authorizedUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_company_access');
+    }
+
     public function getLogoUrlAttribute(): ?string
     {
         if ($this->logo) {

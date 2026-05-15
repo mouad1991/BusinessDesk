@@ -21,11 +21,15 @@ class CompanyController extends Controller
 
     public function create()
     {
+        // Only an admin impersonating a manager can create a company
+        abort_if(!session()->has('impersonate'), 403, 'Seul l\'administrateur peut créer une société.');
         return view('manager.companies.create');
     }
 
     public function store(Request $request)
     {
+        abort_if(!session()->has('impersonate'), 403, 'Seul l\'administrateur peut créer une société.');
+
         $data = $this->validateCompany($request);
         $data['user_id'] = Auth::id();
         $data['logo'] = $this->handleLogo($request);

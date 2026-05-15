@@ -18,7 +18,15 @@ class SetCurrentCompany
                 ->with('info', 'Veuillez sélectionner une société.');
         }
 
-        $company = Company::where('user_id', Auth::id())->find($companyId);
+        $user = Auth::user();
+
+        if ($user->isCollaborator()) {
+            // Collaborator: verify access via pivot table
+            $company = Company::whereHas('authorizedUsers', fn($q) => $q->where('users.id', $user->id))
+                ->find($companyId);
+        } else {
+            $company = Company::where('user_id', $user->id)->find($companyId);
+        }
 
         if (!$company) {
             $request->session()->forget('current_company_id');

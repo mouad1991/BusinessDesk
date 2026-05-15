@@ -586,3 +586,128 @@ nav svg { width: 16px; height: 16px; }
 .company-select-arrow { font-size: 22px; color: var(--gray-400); }
 .company-select-card:hover .company-select-arrow { color: var(--primary); }
 .company-select-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--gray-200); }
+
+/* =============================================
+   Theme Toggle Button (Sidebar)
+   ============================================= */
+.theme-toggle {
+  background: none; border: none; color: rgba(255,255,255,.5); cursor: pointer;
+  padding: 4px; border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  transition: color .15s, background .15s; flex-shrink: 0;
+}
+.theme-toggle:hover { color: #fff; background: rgba(255,255,255,.1); }
+.theme-toggle svg { width: 16px; height: 16px; }
+
+/* =============================================
+   Dark Mode
+   ============================================= */
+[data-theme="dark"] {
+  --primary:       #2563eb;
+  --primary-light: #3b82f6;
+  --accent:        #3b82f6;
+  --accent-hover:  #2563eb;
+  --gray-50:       #1e293b;
+  --gray-100:      #1e293b;
+  --gray-200:      #334155;
+  --gray-300:      #475569;
+  --gray-500:      #94a3b8;
+  --gray-700:      #cbd5e1;
+  --gray-900:      #f1f5f9;
+  --shadow:        0 1px 3px rgba(0,0,0,.4);
+  --shadow-md:     0 4px 12px rgba(0,0,0,.4);
+}
+
+[data-theme="dark"] body { background: #0f172a; color: #f1f5f9; }
+
+[data-theme="dark"] .sidebar { background: #111827; border-right: 1px solid #1e293b; }
+
+[data-theme="dark"] .main-content { background: #0f172a; }
+
+[data-theme="dark"] .page-header { background: #1e293b; border-bottom-color: #334155; }
+
+[data-theme="dark"] .card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .card-header { border-bottom-color: #334155; }
+[data-theme="dark"] .card-header h2, [data-theme="dark"] .card-header h3 { color: #f1f5f9; }
+[data-theme="dark"] .card-footer { border-top-color: #334155; }
+
+[data-theme="dark"] .table th { background: #162032; border-bottom-color: #334155; }
+[data-theme="dark"] .table td { border-bottom-color: #243352; color: #e2e8f0; }
+[data-theme="dark"] .table tbody tr:hover { background: #1a2a44; }
+
+[data-theme="dark"] .form-group label { color: #cbd5e1; }
+[data-theme="dark"] .form-group input[type="text"],
+[data-theme="dark"] .form-group input[type="email"],
+[data-theme="dark"] .form-group input[type="password"],
+[data-theme="dark"] .form-group input[type="number"],
+[data-theme="dark"] .form-group input[type="date"],
+[data-theme="dark"] .form-group input[type="file"],
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: #0f172a; border-color: #334155; color: #f1f5f9;
+}
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus { border-color: var(--accent); }
+
+[data-theme="dark"] .btn-secondary { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+[data-theme="dark"] .btn-secondary:hover { background: #243352; color: #f1f5f9; }
+
+[data-theme="dark"] .btn-icon { background: #243352; border-color: #334155; color: #cbd5e1; }
+[data-theme="dark"] .btn-icon:hover { background: #334155; }
+
+[data-theme="dark"] .stat-card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .stat-value { color: #f1f5f9; }
+[data-theme="dark"] .company-block { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .last-doc-card { background: #162032; border-color: #334155; }
+[data-theme="dark"] .quick-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+[data-theme="dark"] .quick-btn:hover { background: #1e3a5f; border-color: #2563eb; color: #60a5fa; }
+
+[data-theme="dark"] .alert-success { background: #052e16; border-color: #166534; color: #4ade80; }
+[data-theme="dark"] .alert-error   { background: #2d0a0a; border-color: #7f1d1d; color: #f87171; }
+[data-theme="dark"] .alert-info    { background: #1e3a5f; border-color: #1d4ed8; color: #60a5fa; }
+
+[data-theme="dark"] .autocomplete-dropdown { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .ac-item { border-bottom-color: #334155; color: #f1f5f9; }
+[data-theme="dark"] .ac-item:hover { background: #243352; }
+
+[data-theme="dark"] .client-info-preview { background: #162032; border-color: #334155; }
+
+[data-theme="dark"] .totals-table { border-color: #334155; }
+[data-theme="dark"] .totals-row { border-bottom-color: #334155; }
+
+[data-theme="dark"] .status-form select { background: #0f172a; border-color: #334155; color: #f1f5f9; }
+
+[data-theme="dark"] .market-stats-bar { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .mstat { border-right-color: #334155; }
+[data-theme="dark"] .market-dashboard-block { border-color: #334155; }
+[data-theme="dark"] .market-dashboard-header { background: #162032; border-bottom-color: #334155; }
+
+[data-theme="dark"] .payment-summary-bar { border-color: #334155; }
+[data-theme="dark"] .payment-stat { background: #1e293b; border-right-color: #334155; }
+[data-theme="dark"] .pstat-success { background: #052e16; }
+[data-theme="dark"] .pstat-danger  { background: #2d0a0a; }
+
+[data-theme="dark"] .tpl-card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .tpl-preview { background: #162032; border-bottom-color: #334155; }
+
+[data-theme="dark"] .empty-card { background: #1e293b; border-color: #334155; }
+
+[data-theme="dark"] .attachments-current,
+[data-theme="dark"] .attachment-item,
+[data-theme="dark"] .attachment-card { border-color: #334155; }
+
+[data-theme="dark"] .auth-body { background: #0f172a; }
+[data-theme="dark"] .auth-card { background: #1e293b; border: 1px solid #334155; }
+[data-theme="dark"] .auth-logo h1 { color: #f1f5f9; }
+[data-theme="dark"] .auth-form .form-group input { background: #0f172a; border-color: #334155; color: #f1f5f9; }
+
+[data-theme="dark"] .company-select-card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .company-select-header h1 { color: #f1f5f9; }
+[data-theme="dark"] .company-select-footer { border-top-color: #334155; }
+
+[data-theme="dark"] .items-table td input { color: #f1f5f9; }
+[data-theme="dark"] .items-table td input:focus { background: #162032; }
+
+[data-theme="dark"] .impersonate-bar { background: #b45309; color: #fff1cc; }
+
+[data-theme="dark"] .doc-number { color: #60a5fa; }

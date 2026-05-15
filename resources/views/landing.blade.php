@@ -94,12 +94,11 @@
             width: 38px;
             height: 38px;
             border-radius: 10px;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet));
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900;
-            color: #fff;
             box-shadow: 0 0 24px rgba(0, 212, 255, 0.4);
+            overflow: hidden;
         }
+        .brand-logo img { width: 38px; height: 38px; object-fit: contain; }
         .nav-actions { display: flex; align-items: center; gap: 12px; }
         .nav-link {
             color: var(--text-200);
@@ -493,7 +492,7 @@
 <nav class="navbar">
     <div class="nav-inner">
         <a href="#" class="brand">
-            <div class="brand-logo">BD</div>
+            <div class="brand-logo"><img src="{{ asset('images/logo.svg') }}" alt="BusinessDesk"></div>
             <span>BusinessDesk</span>
         </a>
         <div class="nav-actions">

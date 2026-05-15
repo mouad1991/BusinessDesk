@@ -14,8 +14,8 @@ class ManagerMiddleware
             return redirect()->route('login');
         }
 
-        // Manager or admin impersonating a manager
-        if (Auth::user()->isManager() || $request->session()->has('impersonate')) {
+        // Manager, collaborator, or admin impersonating a manager
+        if (Auth::user()->isManager() || Auth::user()->isCollaborator() || $request->session()->has('impersonate')) {
             return $next($request);
         }
 

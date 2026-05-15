@@ -8,6 +8,10 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @stack('styles')
+    <script>
+        // Apply saved theme before render to avoid flash
+        (function(){var t=localStorage.getItem('bd-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();
+    </script>
 </head>
 <body>
 
@@ -41,7 +45,7 @@
                 </a>
             @else
                 @php
-                    $userCompanies = auth()->user()->companies()->orderBy('name')->get();
+                    $userCompanies = auth()->user()->getWorkableCompanies();
                     $currentCo = app()->bound('currentCompany') ? app('currentCompany') : null;
                 @endphp
 
@@ -124,10 +128,18 @@
 
                 <div class="nav-divider"></div>
 
+                @if(!auth()->user()->isCollaborator())
                 <a href="{{ route('manager.companies.index') }}" class="nav-item nav-item-secondary {{ request()->routeIs('manager.companies.*') ? 'active' : '' }}">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     Mes sociétés
                 </a>
+                @if(auth()->user()->isManager())
+                <a href="{{ route('manager.collaborators.index') }}" class="nav-item nav-item-secondary {{ request()->routeIs('manager.collaborators.*') ? 'active' : '' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Utilisateurs
+                </a>
+                @endif
+                @endif
             @endif
         </nav>
 
@@ -136,10 +148,20 @@
                 <div class="user-avatar">{{ strtoupper(substr(auth()->user()->firstname, 0, 1)) }}</div>
                 <div class="user-details">
                     <div class="user-name">{{ auth()->user()->full_name }}</div>
-                    <div class="user-role">{{ auth()->user()->isAdmin() ? 'Administrateur' : 'Gérant' }}</div>
+                    <div class="user-role">
+                        @if(auth()->user()->isAdmin()) Administrateur
+                        @elseif(auth()->user()->isCollaborator()) Collaborateur
+                        @else Gérant
+                        @endif
+                    </div>
                 </div>
                 <svg class="user-info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
+            <button id="theme-toggle" class="theme-toggle" title="Changer le thème">
+                <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn-logout" title="Déconnexion">

@@ -39,6 +39,9 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'manager'])->gro
     // Companies management (does NOT require current company)
     Route::resource('companies', Manager\CompanyController::class)->except(['show']);
 
+    // Collaborators management (manager only, no current-company required)
+    Route::resource('collaborators', Manager\CollaboratorController::class)->except(['show']);
+
     // All routes below require an active company in session
     Route::middleware('current-company')->group(function () {
 
