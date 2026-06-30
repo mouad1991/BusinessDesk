@@ -46,7 +46,7 @@
         @foreach($document->items as $item)
         <tr>
             <td class="center">{{ $item->ref }}</td>
-            <td>{{ $item->description }}</td>
+            <td>{!! $item->description !!}</td>
             <td class="center">{{ $item->unit }}</td>
             <td class="center">{{ number_format($item->qty_ordered, 2, ',', ' ') }}</td>
             <td class="center">{{ number_format($item->qty_shipped, 2, ',', ' ') }}</td>

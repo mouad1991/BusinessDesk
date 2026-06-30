@@ -61,14 +61,20 @@
                     </thead>
                     <tbody>
                         @foreach($quote->items as $item)
+                        @if($item->is_category)
+                        <tr class="item-category-view">
+                            <td colspan="6">{{ $item->description }}</td>
+                        </tr>
+                        @else
                         <tr>
                             <td>{{ $item->ref }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td class="desc-html">{!! $item->description !!}</td>
                             <td>{{ $item->unit }}</td>
                             <td class="text-right">{{ number_format($item->quantity, 2, ',', ' ') }}</td>
                             <td class="text-right">{{ number_format($item->unit_price_ht, 2, ',', ' ') }} DH</td>
                             <td class="text-right font-bold">{{ number_format($item->total_price_ht, 2, ',', ' ') }} DH</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

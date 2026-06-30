@@ -55,17 +55,26 @@
     </thead>
     <tbody>
         @foreach($document->items as $item)
+        @if($item->is_category)
+        <tr class="pdf-category-row">
+            <td colspan="6" class="pdf-category-title">{{ $item->description }}</td>
+        </tr>
+        @else
         <tr>
             <td class="center">{{ $item->ref }}</td>
-            <td>{{ $item->description }}</td>
+            <td>{!! $item->description !!}</td>
             <td class="center">{{ $item->unit }}</td>
             <td class="center">{{ number_format($item->quantity, 2, ',', ' ') }}</td>
             <td class="right">{{ number_format($item->unit_price_ht, 2, ',', ' ') }} DH</td>
             <td class="right bold">{{ number_format($item->total_price_ht, 2, ',', ' ') }} DH</td>
         </tr>
+        @endif
         @endforeach
-        @php $minRows = ($pdfTheme ?? 'modern') === 'compact' ? 8 : 12; @endphp
-        @for($i = count($document->items); $i < $minRows; $i++)
+        @php
+            $minRows = ($pdfTheme ?? 'modern') === 'compact' ? 8 : 12;
+            $realCount = $document->items->where('is_category', false)->count();
+        @endphp
+        @for($i = $realCount; $i < $minRows; $i++)
         <tr class="empty-row"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         @endfor
     </tbody>

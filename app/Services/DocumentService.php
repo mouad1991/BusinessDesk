@@ -17,6 +17,7 @@ class DocumentService
     {
         $totalHtBeforeDiscount = 0;
         foreach ($items as $item) {
+            if (!empty($item['is_category'])) continue;
             $totalHtBeforeDiscount += (float)($item['total_price_ht'] ?? 0);
         }
 
@@ -50,6 +51,26 @@ class DocumentService
         foreach ($items as $i => $item) {
             if (empty($item['description'])) continue;
 
+            $isCategory = !empty($item['is_category']);
+            $description = strip_tags($item['description'], '<strong><b><em><i><u><br><ul><ol><li><p><div><span>');
+
+            if ($isCategory) {
+                DocumentItem::create([
+                    'document_type'  => $docType,
+                    'document_id'    => $docId,
+                    'ref'            => '',
+                    'description'    => strip_tags($description), // plain text for category titles
+                    'unit'           => '',
+                    'quantity'       => 0,
+                    'unit_price_ht'  => 0,
+                    'total_price_ht' => 0,
+                    'sort_order'     => $order,
+                    'is_category'    => true,
+                ]);
+                $order++;
+                continue;
+            }
+
             $ref = str_pad($order, 2, '0', STR_PAD_LEFT);
             $qty = (float)($item['quantity'] ?? 1);
             $phu = (float)($item['unit_price_ht'] ?? 0);
@@ -59,16 +80,16 @@ class DocumentService
                 'document_type'  => $docType,
                 'document_id'    => $docId,
                 'ref'            => $ref,
-                'description'    => $item['description'],
+                'description'    => $description,
                 'unit'           => $item['unit'] ?? 'F',
                 'quantity'       => $qty,
                 'unit_price_ht'  => $phu,
                 'total_price_ht' => $pth,
                 'sort_order'     => $order,
+                'is_category'    => false,
             ]);
 
-            // Save description for autocomplete
-            $this->saveServiceDescription($company, $item['description']);
+            $this->saveServiceDescription($company, strip_tags($description));
             $order++;
         }
     }

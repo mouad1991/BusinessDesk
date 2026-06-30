@@ -93,6 +93,12 @@ body { font-family: DejaVu Sans, Arial, sans-serif; font-size: 9pt; color: #222;
 .pdf-notes-title { background: #f8fafc; padding: 4px 8px; font-size: 8pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; color: #1a3a5c; border-bottom: 1px solid #dce3ec; }
 .pdf-notes-body { padding: 6px 8px; font-size: 8.5pt; color: #334155; line-height: 1.4; white-space: pre-wrap; }
 
+/* PDF Category rows */
+.pdf-category-row { }
+.pdf-category-title { font-weight: bold; font-size: 9pt; padding: 5px 8px; text-align: center; color: #1a3a5c; border-bottom: 1px solid #e0e8f2; }
+.items-table td ul, .items-table td ol { margin: 2px 0 2px 0; padding-left: 16px; }
+.items-table td li { margin: 1px 0; }
+
 .conditions { margin-top: 12px; padding: 8px 10px; }
 .conditions-title { font-size: 8pt; font-weight: bold; margin-bottom: 5px; }
 .conditions p { font-size: 7.5pt; color: #555; margin-bottom: 3px; font-style: italic; }

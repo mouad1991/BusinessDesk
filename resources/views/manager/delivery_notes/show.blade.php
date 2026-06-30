@@ -64,7 +64,7 @@
                         @foreach($deliveryNote->items as $item)
                         <tr>
                             <td>{{ $item->ref }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td class="desc-html">{!! $item->description !!}</td>
                             <td>{{ $item->unit }}</td>
                             <td class="text-right">{{ number_format($item->qty_ordered, 0, ',', ' ') }}</td>
                             <td class="text-right font-bold">{{ number_format($item->qty_shipped, 0, ',', ' ') }}</td>

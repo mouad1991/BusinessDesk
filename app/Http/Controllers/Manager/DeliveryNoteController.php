@@ -128,7 +128,7 @@ class DeliveryNoteController extends Controller
             DeliveryItem::create([
                 'delivery_note_id' => $note->id,
                 'ref'              => str_pad($order, 2, '0', STR_PAD_LEFT),
-                'description'      => $item['description'],
+                'description'      => strip_tags($item['description'], '<strong><b><em><i><u><br><ul><ol><li><p><div><span>'),
                 'unit'             => $item['unit'] ?? 'Unité',
                 'qty_ordered'      => $qtyOrdered,
                 'qty_shipped'      => $qtyShipped,
