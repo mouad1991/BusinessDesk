@@ -74,6 +74,7 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'manager'])->gro
         Route::get('invoices/{invoice}/pdf', [Manager\InvoiceController::class, 'pdf'])->name('invoices.pdf');
         Route::post('invoices/from-source', [Manager\InvoiceController::class, 'storeFromSource'])
             ->name('invoices.from-source');
+        Route::post('invoices/{invoice}/duplicate', [Manager\InvoiceController::class, 'duplicate'])->name('invoices.duplicate');
         Route::patch('invoices/{invoice}/status', [Manager\InvoiceController::class, 'updateStatus'])->name('invoices.update-status');
 
         // Invoice payments

@@ -155,6 +155,35 @@ class InvoiceController extends Controller
             ->with('success', 'Facture supprimée avec succès.');
     }
 
+    public function duplicate(Invoice $invoice)
+    {
+        $company = app('currentCompany');
+        abort_if($invoice->company_id !== $company->id, 403);
+
+        $invoice->load('items');
+
+        // Copie de l'en-tête : nouveau numéro, statut brouillon, règlements réinitialisés
+        $copy = $invoice->replicate();
+        $copy->number         = $this->numbering->generate($company, 'F');
+        $copy->status         = 'draft';
+        $copy->date           = now()->toDateString();
+        $copy->paid_amount    = 0;
+        $copy->payment_status = 'unpaid';
+        $copy->source_type    = null;
+        $copy->source_id      = null;
+        $copy->save();
+
+        // Copie des lignes (prestations + catégories)
+        foreach ($invoice->items as $item) {
+            $newItem = $item->replicate();
+            $newItem->document_id = $copy->id;
+            $newItem->save();
+        }
+
+        return redirect()->route('manager.invoices.edit', $copy)
+            ->with('success', 'Facture dupliquée depuis ' . $invoice->number . '. Ajustez la date / période puis enregistrez.');
+    }
+
     public function pdf(Invoice $invoice)
     {
         $company = app('currentCompany');
