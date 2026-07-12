@@ -39,6 +39,7 @@ body { font-family: DejaVu Sans, Arial, sans-serif; font-size: 9pt; color: #222;
 .items-table tbody td { padding: 5px 6px; font-size: 9pt; }
 .items-table tbody td.center { text-align: center; }
 .items-table tbody td.right  { text-align: right; }
+.items-table thead th, .items-table tbody td.center, .items-table tbody td.right { white-space: nowrap; }
 .items-table tbody td.bold   { font-weight: bold; }
 .empty-row td { height: 16px; border-bottom: 1px solid #e8edf5; }
 

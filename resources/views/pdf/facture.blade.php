@@ -45,12 +45,12 @@
 <table class="items-table">
     <thead>
         <tr>
-            <th style="width:40px" class="center">Réf.</th>
+            <th style="width:38px" class="center">Réf.</th>
             <th class="center">Désignation / Description</th>
-            <th style="width:50px" class="center">Unité</th>
-            <th style="width:40px" class="center">Qté</th>
-            <th style="width:80px" class="center">P.U HT</th>
-            <th style="width:110px" class="center">P.T HT</th>
+            <th style="width:48px" class="center">Unité</th>
+            <th style="width:62px" class="center">Qté</th>
+            <th style="width:72px" class="center">P.U HT (DH)</th>
+            <th style="width:82px" class="center">P.T HT (DH)</th>
         </tr>
     </thead>
     <tbody>
@@ -65,18 +65,12 @@
             <td>{!! $item->description !!}</td>
             <td class="center">{{ $item->unit }}</td>
             <td class="center">{{ number_format($item->quantity, 2, ',', ' ') }}</td>
-            <td class="right">{{ number_format($item->unit_price_ht, 2, ',', ' ') }} DH</td>
-            <td class="right bold">{{ number_format($item->total_price_ht, 2, ',', ' ') }} DH</td>
+            <td class="right">{{ number_format($item->unit_price_ht, 2, ',', ' ') }}</td>
+            <td class="right bold">{{ number_format($item->total_price_ht, 2, ',', ' ') }}</td>
         </tr>
         @endif
         @endforeach
-        @php
-            $minRows = ($pdfTheme ?? 'modern') === 'compact' ? 8 : 12;
-            $realCount = $document->items->where('is_category', false)->count();
-        @endphp
-        @for($i = $realCount; $i < $minRows; $i++)
-        <tr class="empty-row"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        @endfor
+        @include('pdf.partials.empty-rows', ['cols' => 6])
     </tbody>
 </table>
 

@@ -53,9 +53,7 @@
             <td class="center">{{ number_format($item->qty_pending, 2, ',', ' ') }}</td>
         </tr>
         @endforeach
-        @for($i = count($document->items); $i < 12; $i++)
-        <tr class="empty-row"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        @endfor
+        @include('pdf.partials.empty-rows', ['cols' => 6])
     </tbody>
 </table>
 
